@@ -1,0 +1,24 @@
+﻿@model Randevu
+
+<form method="post">
+    <div class="border p-3 mt-5">
+        <div class="row pb-3">
+            <h2 class="text-primary">Randevu Kaydı Sil</h2>
+            </hr>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="HastaId" class="p-0"></label>
+            <input asp-for="HastaId" class="form-control" />
+
+            <label asp-for="RandevuTarihi" class="p-0"></label>
+            <input asp-for="RandevuTarihi" class="form-control" />
+
+            <label asp-for="RandevuSaati" class="p-0"></label>
+            <input asp-for="RandevuSaati" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sil</button>
+        <a asp-controller="Randevu" asp-action="Index" class="btn btn-primary" type="button">Geri Dön</a>
+    </div>
+</form>

@@ -1,0 +1,28 @@
+﻿@model Doktor
+<form method="post">
+    <div class="border p-3 mt-5">
+        <div class="row pb-3">
+            <h2 class="text-primary">Doktor Güncelle</h2>
+            </hr>
+        </div>
+        <div class="mb-3">
+            <label asp-for="DoktorAdi" class="p-0"></label>
+            <input asp-for="DoktorAdi" class="form-control" />
+            <span asp-validation-for="DoktorAdi" class="text-bg-danger"></span>
+
+            <label asp-for="Bolum" class="p-0"></label>
+            <input asp-for="Bolum" class="form-control" />
+            <span asp-validation-for="Bolum" class="text-bg-danger"></span>
+
+            <label asp-for="Unvan" class="p-0"></label>
+            <input asp-for="Unvan" class="form-control" />
+            <span asp-validation-for="Unvan" class="text-bg-danger"></span>
+
+            <label asp-for="DogumYili" class="p-0"></label>
+            <input asp-for="DogumYili" class="form-control" />
+            <span asp-validation-for="DogumYili" class="text-bg-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Güncelle</button>
+        <a asp-controller="Doktor" asp-action="Index" class="btn btn-primary" type="button">Geri Dön</a>
+    </div>
+</form>

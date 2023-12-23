@@ -1,0 +1,27 @@
+﻿@model Doktor
+<form method="post">
+    <div class="border p-3 mt-5">
+        <div class="row pb-3">
+            <h2 class="text-primary">Doktor Sil</h2>
+            </hr>
+        </div>
+        <div class="mb-3">
+            <label asp-for="DoktorAdi" class="p-0"></label>
+            <input asp-for="DoktorAdi" disabled class="form-control" />
+
+            <label asp-for="Bolum" class="p-0"></label>
+            <input asp-for="Bolum" disabled class="form-control" />
+            
+            <label asp-for="Unvan" class="p-0"></label>
+            <input asp-for="Unvan" disabled class="form-control" />
+            
+
+            <label asp-for="DogumYili" class="p-0"></label>
+            <input asp-for="DogumYili" disabled class="form-control" />
+            
+            
+        </div>
+        <button type="submit" class="btn btn-primary">Sil</button>
+        <a asp-controller="Doktor" asp-action="Index" class="btn btn-primary" type="button">Geri Dön</a>
+    </div>
+</form>

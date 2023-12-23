@@ -1,0 +1,61 @@
+﻿@model List<Doktor>
+
+@if (TempData["basarili"] != null)
+{
+    <h2 style="color:red">@TempData["basarili"]</h2>
+}
+
+<h1>Doktorlarımız</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Doktor Id
+            </th>
+            <th>
+                Doktor Adı
+            </th>
+            <th>
+                Bölümü
+            </th>
+            <th>
+                Ünvanı
+            </th>
+            <th>
+                Doğum Yılı
+            </th>
+            <th>
+                Polikliniği
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var doktor in Model)
+        {
+            <tr>
+                <td>@doktor.Id</td>
+                <td>@doktor.DoktorAdi</td>
+                <td>@doktor.Bolum</td>
+                <td>@doktor.Unvan</td>
+                <td>@doktor.DogumYili</td>
+                <td>@doktor.PoliklinikTuru.Ad </td>
+                <td>
+                    <a asp-controller="Doktor" asp-action="EkleGuncelle" asp-route-id="@doktor.Id" type="button" class="btn btn-success" style="width:150px">Güncelle</a>
+                </td>
+                <td>
+                    <a asp-controller="Doktor" asp-action="Sil" asp-route-id="@doktor.Id" type="button" class="btn btn-danger" style="width:150px">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="row pt-3 pb3">
+    <div>
+        
+        <a asp-controller="Doktor" asp-action="EkleGuncelle" class="btn btn-primary" type="button">Oluştur</a>
+    </div>
+</div>
