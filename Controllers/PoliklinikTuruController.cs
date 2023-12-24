@@ -6,7 +6,7 @@ using udemyWeb1.Models;
 namespace udemyWeb1.Controllers
 {
 
-    [Authorize(Roles = UserRoles.Role_Admin)]
+    
 
     public class PoliklinikTuruController : Controller
     {

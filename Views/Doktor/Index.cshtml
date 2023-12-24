@@ -1,4 +1,5 @@
-﻿@model List<Doktor>
+﻿@using udemyWeb1.Haberlesme;
+@model List<Doktor>
 
 @if (TempData["basarili"] != null)
 {
@@ -27,10 +28,13 @@
             <th>
                 Polikliniği
             </th>
-            <th>
-            </th>
-            <th>
-            </th>
+            @if (User.IsInRole(UserRoles.Role_Admin))
+            {
+                <th>
+                </th>
+                <th>
+                </th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -43,19 +47,26 @@
                 <td>@doktor.Unvan</td>
                 <td>@doktor.DogumYili</td>
                 <td>@doktor.PoliklinikTuru.Ad </td>
-                <td>
-                    <a asp-controller="Doktor" asp-action="EkleGuncelle" asp-route-id="@doktor.Id" type="button" class="btn btn-success" style="width:150px">Güncelle</a>
+
+                @if (User.IsInRole(UserRoles.Role_Admin))
+                {
+                    <td>
+                        <a asp-controller="Doktor" asp-action="EkleGuncelle" asp-route-id="@doktor.Id" type="button" class="btn btn-success" style="width:150px">Güncelle</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Doktor" asp-action="Sil" asp-route-id="@doktor.Id" type="button" class="btn btn-danger" style="width:150px">Sil</a>
                 </td>
-                <td>
-                    <a asp-controller="Doktor" asp-action="Sil" asp-route-id="@doktor.Id" type="button" class="btn btn-danger" style="width:150px">Sil</a>
-                </td>
+                }
             </tr>
         }
     </tbody>
 </table>
-<div class="row pt-3 pb3">
-    <div>
-        
-        <a asp-controller="Doktor" asp-action="EkleGuncelle" class="btn btn-primary" type="button">Oluştur</a>
+@if (User.IsInRole(UserRoles.Role_Admin))
+{
+    <div class="row pt-3 pb3">
+        <div>
+
+            <a asp-controller="Doktor" asp-action="EkleGuncelle" class="btn btn-primary" type="button">Oluştur</a>
+        </div>
     </div>
-</div>
+}

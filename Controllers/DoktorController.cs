@@ -7,7 +7,7 @@ using udemyWeb1.Models;
 namespace udemyWeb1.Controllers
 {
 
-    [Authorize(Roles = UserRoles.Role_Admin)]
+    
 
     public class DoktorController : Controller
     
@@ -23,6 +23,8 @@ namespace udemyWeb1.Controllers
             _webHostEnvironment = webHostEnvironment;
 
         }
+
+        
         public IActionResult Index()
         {
             //List<Doktor> objDoktor = _doktorRepository.GetAll().ToList();
@@ -30,6 +32,8 @@ namespace udemyWeb1.Controllers
 
             return View(objDoktor);
         }
+
+       
         public IActionResult EkleGuncelle(int? id) 
         {
             IEnumerable<SelectListItem> PoliklinikTuruList = _poliklinikTuruRepository.GetAll()
@@ -59,6 +63,7 @@ namespace udemyWeb1.Controllers
         }
 
         [HttpPost]
+        
         public IActionResult EkleGuncelle(Doktor doktor,IFormFile? file)
         {
             if(ModelState.IsValid) {
@@ -94,37 +99,8 @@ namespace udemyWeb1.Controllers
             }
             return View();
         }
-        /*
-        public IActionResult Guncelle(int? id)
-        {
-            if(id== null || id==0)
-            {
-                return NotFound();
-            }
-            Doktor? doktorVT = _doktorRepository.Get(u=>u.Id==id);  //Expression<Func<T, bool>> filtre
-            if(doktorVT == null) 
-            { 
-                return NotFound(); 
-            }
-            return View(doktorVT);
-        }
-        */
-        /*
 
-        [HttpPost]
-        public IActionResult Guncelle(Doktor doktor)
-        {
-            if (ModelState.IsValid)
-            {
-                _doktorRepository.Guncelle(doktor);
-                _doktorRepository.Kaydet();
-                TempData["basarili"] = "Doktor başarıyla güncellendi";
-                return RedirectToAction("Index", "Doktor");
-            }
-            return View();
-        }
-        */
-
+        
         public IActionResult Sil(int? id)
         {
             if (id == null || id == 0)
@@ -140,6 +116,7 @@ namespace udemyWeb1.Controllers
         }
 
         [HttpPost,ActionName("Sil")]
+        
         public IActionResult SilPOST(int? id)
         {
             Doktor? doktor = _doktorRepository.Get(u => u.Id == id);
