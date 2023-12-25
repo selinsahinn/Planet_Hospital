@@ -1,13 +1,16 @@
-﻿@using udemyWeb1.Haberlesme;
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PlanetHospital</title>
+    <link href="~/lib/bootstrap/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/8d88dca304.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/udemyWeb1.styles.css" asp-append-version="true" />
+    @RenderSection("CustomStyles", required: false)
 </head>
 <body>
     <header>
@@ -21,20 +24,20 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-house"></i> Anasayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="PoliklinikTuru" asp-action="Index">Poliklinikler</a>
+                            <a class="nav-link " asp-area="" asp-controller="PoliklinikTuru" asp-action="Index"><i class="fa-solid fa-hospital"></i> Poliklinikler</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Doktor" asp-action="Index">Doktorlarımız</a>
+                            <a class="nav-link " asp-area="" asp-controller="Doktor" asp-action="Index"><i class="fa-solid fa-user-doctor"></i> Doktorlarımız</a>
                         </li>
-                       
+
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Randevu" asp-action="Index">Randevu İşlemleri</a>
+                            <a class="nav-link " asp-area="" asp-controller="Randevu" asp-action="Index"><i class="fa-solid fa-receipt"></i> Randevu İşlemleri</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Privacy"><i class="fa-solid fa-lock"></i> Privacy</a>
                         </li>
                     </ul>
 
@@ -46,6 +49,9 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <!-- Slider -->
+            @RenderSection("Slider", required: false)
+
             @RenderBody()
         </main>
     </div>
@@ -55,9 +61,12 @@
             &copy; 2023 - Planet Hospital - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("CustomScripts", required: false)
+    
 </body>
 </html>

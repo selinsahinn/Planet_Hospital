@@ -1,4 +1,5 @@
-﻿@model List<Randevu>
+﻿@using udemyWeb1.Haberlesme;
+@model List<Randevu>
 
 @if (TempData["basarili"] != null)
 {
@@ -15,9 +16,7 @@
             <th>
                 HastaId
             </th>
-            <th>
-                DoktorId
-            </th>
+           
             <th>
                 Doktor
             </th>
@@ -43,18 +42,22 @@
                 <td>@randevu.Doktor.DoktorAdi</td>
                 <td>@randevu.RandevuTarihi</td>
                 <td>@randevu.RandevuSaati</td>
-                <td>
-                    <a asp-controller="Randevu" asp-action="EkleGuncelle" asp-route-id="@randevu.Id" type="button" class="btn btn-success" style="width:150px">Güncelle</a>
+                @if (User.IsInRole(UserRoles.Role_Admin))
+                {
+                    <td>
+                        <a asp-controller="Randevu" asp-action="EkleGuncelle" asp-route-id="@randevu.Id" type="button" class="btn btn-success" style="width:150px">Güncelle</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Randevu" asp-action="Sil" asp-route-id="@randevu.Id" type="button" class="btn btn-danger" style="width:150px">Sil</a>
                 </td>
-                <td>
-                    <a asp-controller="Randevu" asp-action="Sil" asp-route-id="@randevu.Id" type="button" class="btn btn-danger" style="width:150px">Sil</a>
-                </td>
+                }
             </tr>
         }
     </tbody>
 </table>
-<div class="row pt-3 pb3">
-    <div>    
-        <a asp-controller="Randevu" asp-action="EkleGuncelle" class="btn btn-primary" type="button">Oluştur</a>
+
+    <div class="row pt-3 pb3">
+        <div>    
+            <a asp-controller="Randevu" asp-action="EkleGuncelle" class="btn btn-primary" type="button">Oluştur</a>
+        </div>
     </div>
-</div>

@@ -10,9 +10,9 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>
-                Doktor Id
+            <th>               
             </th>
+            
             <th>
                 Doktor Adı
             </th>
@@ -41,19 +41,22 @@
         @foreach(var doktor in Model)
         {
             <tr>
-                <td>@doktor.Id</td>
-                <td>@doktor.DoktorAdi</td>
-                <td>@doktor.Bolum</td>
-                <td>@doktor.Unvan</td>
-                <td>@doktor.DogumYili</td>
-                <td>@doktor.PoliklinikTuru.Ad </td>
+                <td align="center" valign="middle">
+                    <img src="@doktor.ResimUrl" style="border-radius:7px; border:1px solid #bbb9b9; max-width:145px;max-height:275px;"/>
+                </td>
+                
+                <td align="center" valign="middle">@doktor.DoktorAdi</td>
+                <td align="center" valign="middle">@doktor.Bolum</td>
+                <td align="center" valign="middle">@doktor.Unvan</td>
+                <td align="center" valign="middle">@doktor.DogumYili</td>
+                <td align="center" valign="middle">@doktor.PoliklinikTuru.Ad </td>
 
                 @if (User.IsInRole(UserRoles.Role_Admin))
                 {
-                    <td>
+                    <td align="center" valign="middle">
                         <a asp-controller="Doktor" asp-action="EkleGuncelle" asp-route-id="@doktor.Id" type="button" class="btn btn-success" style="width:150px">Güncelle</a>
                     </td>
-                    <td>
+                    <td align="center" valign="middle">
                         <a asp-controller="Doktor" asp-action="Sil" asp-route-id="@doktor.Id" type="button" class="btn btn-danger" style="width:150px">Sil</a>
                 </td>
                 }

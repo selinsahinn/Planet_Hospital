@@ -2,12 +2,75 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <br/>
-    <h1 style="color:purple" class="display-4"><strong>Hastane Sayfamıza Hoşgeldiniz</strong></h1>
-    <br/>
-    <br/>
-    <p><img src="/img/sembol1.png" /></p>
-    <p><img src="/img/hastane1.webp" /></p>
-    
-</div>
+@section CustomStyles
+    {
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <style>
+       
+        /* İhtiyaca göre slider'a özel stil ekleyebilirsiniz. */
+        .slider {
+            margin: 20px;
+            max-width: 75vw; /* İstediğiniz genişliği ayarlayabilirsiniz */
+            max-height: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden; /* Taşan içeriği gizle */
+           
+            border-radius: 10px; /* Kenarları kavisli yap */
+        }
+
+        .slick-slide img {
+            width: auto;
+            height: 100%;
+            max-width: 100%; /* Resmi slider içine sığdır */
+            margin: 0 auto;
+            border-radius: 8px; /* Kenarları kavisli yap, çerçeveden daha küçük bir değer kullanabilirsiniz */
+        }
+
+    </style>
+}
+
+@section CustomScripts
+    {
+    <script>
+        $(document).ready(function () {
+            $('.slider').slick({
+                autoplay: true,
+                autoplaySpeed: 2000,
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1
+            });
+        });
+    </script>
+}
+
+@section Slider
+    {
+    <div class="slider">
+        <div>
+            <img src="/img/dso.jpg" alt="Slider Image 1">
+        </div>
+        
+        <div>
+            <img src="/img/slider1.jpg" alt="Slider Image 3">
+        </div>
+
+        <div>
+            <img src="/img/slider2.jpg" alt="Slider Image 1">
+        </div>
+
+        <div>
+            <img src="/img/slider3.jpg" alt="Slider Image 1">
+        </div>
+
+        <div>
+            <img src="/img/slider4.jpg" alt="Slider Image 1">
+        </div>
+    </div>
+}
+
+<!-- Diğer içerikler buraya gelebilir -->

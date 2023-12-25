@@ -11,7 +11,7 @@
     <thead>
         <tr>
             <th>
-                Poliklinik Numarası
+               
             </th>
             <th>
                 Poliklinik Adı
@@ -22,7 +22,7 @@
         @foreach(var poliklinikTuru in Model)
         {
             <tr>
-                <td>@poliklinikTuru.Id</td>
+                <td></td>
                 <td>@poliklinikTuru.Ad</td>
                 @if (User.IsInRole(UserRoles.Role_Admin))
                 {
