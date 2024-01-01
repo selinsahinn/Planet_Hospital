@@ -1,3 +1,5 @@
+
+
 body {
     background-color: #B6C4B6; /* Arka plan rengi örneði */
 }
@@ -748,7 +750,7 @@ a:focus {
 
 .info_section {
     padding: 75px 0;
-    background-color: #0a0f43;
+    background-color: #1B4242;
     text-align: center;
     color: #fff;
 }
@@ -830,7 +832,7 @@ a:focus {
         margin-top: 25px;
         color: #fff;
         margin-bottom: 0;
-        background-color: #0a0f43;
+        background-color: #1B4242s;
     }
 
     .info_items .item:hover .img-box {
@@ -855,7 +857,7 @@ a:focus {
 
 /* footer section*/
 .footer_section {
-    background-color: #0a0f43;
+    background-color: #1B4242;
 }
 
     .footer_section p {

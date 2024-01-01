@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 @section CustomStyles
     {
@@ -45,11 +46,14 @@
                 infinite: true,
                 speed: 500,
                 slidesToShow: 1,
-                slidesToScroll: 1
+                slidesToScroll: 1,
+                prevArrow: '<button type="button" class="slick-prev">Önceki</button>',
+                nextArrow: '<button type="button" class="slick-next">Sonraki</button>'
             });
         });
     </script>
 }
+
 
 @section Slider
     {
