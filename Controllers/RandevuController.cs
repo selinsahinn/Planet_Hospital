@@ -61,10 +61,9 @@ namespace udemyWeb1.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Eğer yeni bir randevu ekleniyorsa, eski randevu bilgisine ihtiyaç yok
                 if (randevu.Id != 0)
                 {
-                    // Önceki randevu bilgilerini al
+                    // Güncelleme senaryosu
                     Randevu eskiRandevu = _randevuRepository.Get(u => u.Id == randevu.Id);
 
                     // Eğer tarih veya saat değiştiyse kontrol yap
@@ -80,8 +79,36 @@ namespace udemyWeb1.Controllers
                         if (ayniTarihVeSaatteRandevuVar)
                         {
                             ModelState.AddModelError("RandevuTarihi", "Seçilen tarih ve saatte başka bir randevu bulunmaktadır.");
+                            IEnumerable<SelectListItem> DoktorList = _doktorRepository.GetAll()
+                                .Select(k => new SelectListItem
+                                {
+                                    Text = k.DoktorAdi,
+                                    Value = k.Id.ToString()
+                                });
+                            ViewBag.DoktorList = DoktorList;
                             return View();
                         }
+                    }
+                }
+                else
+                {
+                    // Yeni randevu ekleniyorsa, aynı tarih ve saatte başka bir randevu var mı kontrol et
+                    bool ayniTarihVeSaatteYeniRandevuVar = _randevuRepository.Any(u =>
+                        u.DoktorId == randevu.DoktorId &&
+                        u.RandevuTarihi == randevu.RandevuTarihi &&
+                        u.RandevuSaati == randevu.RandevuSaati);
+
+                    if (ayniTarihVeSaatteYeniRandevuVar)
+                    {
+                        ModelState.AddModelError("RandevuTarihi", "Seçilen tarih ve saatte başka bir randevu bulunmaktadır.");
+                        IEnumerable<SelectListItem> DoktorList = _doktorRepository.GetAll()
+                            .Select(k => new SelectListItem
+                            {
+                                Text = k.DoktorAdi,
+                                Value = k.Id.ToString()
+                            });
+                        ViewBag.DoktorList = DoktorList;
+                        return View();
                     }
                 }
 
@@ -107,6 +134,7 @@ namespace udemyWeb1.Controllers
 
             return View();
         }
+
 
 
         //GET ACTION

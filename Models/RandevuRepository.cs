@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
 using udemyWeb1.Haberlesme;
@@ -15,7 +16,13 @@ namespace udemyWeb1.Models
 
         public void Guncelle(Randevu randevu)
         {
+            var existingRandevu = _uygulamaDbContext.Randevular.Find(randevu.Id);
+            if (existingRandevu != null)
+            {
+                _uygulamaDbContext.Entry(existingRandevu).State = EntityState.Detached;
+            }
             _uygulamaDbContext.Update(randevu);
+
         }
 
         public void Kaydet()
