@@ -1,4 +1,7 @@
-﻿using udemyWeb1.Haberlesme;
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
+using udemyWeb1.Haberlesme;
 
 namespace udemyWeb1.Models
 {
@@ -18,6 +21,11 @@ namespace udemyWeb1.Models
         public void Kaydet()
         {
             _uygulamaDbContext.SaveChanges();
+        }
+
+        public bool Any(Expression<Func<Randevu, bool>> predicate)
+        {
+            return _uygulamaDbContext.Randevular.Any(predicate);
         }
     }
 }

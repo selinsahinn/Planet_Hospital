@@ -1,6 +1,10 @@
 ﻿@model Randevu
 
+<!-- flatpickr ve saat seçenekleri kütüphanesini CDN üzerinden ekleyin -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+<body>
 <form method="post" enctype="multipart/form-data">
 
     <div class="row">
@@ -24,13 +28,20 @@
 
                 <div class="mb-3">
                     <label asp-for="RandevuTarihi" class="p-0"></label>
-                    <input asp-for="RandevuTarihi" class="form-control" />
+                    <input asp-for="RandevuTarihi" class="form-control" data-toggle="flatpickr" />
                     <span asp-validation-for="RandevuTarihi" class="text-bg-danger"></span>
                 </div>
 
                 <div class="mb-3">
                     <label asp-for="RandevuSaati" class="p-0"></label>
-                    <input asp-for="RandevuSaati" class="form-control" />
+                    <select asp-for="RandevuSaati" class="form-select">
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                    </select>
                     <span asp-validation-for="RandevuSaati" class="text-bg-danger"></span>
                 </div>
 
@@ -51,3 +62,12 @@
 
     
 </form>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        flatpickr("[data-toggle=flatpickr]", {
+            minDate: "today",
+            dateFormat: "d-m-Y"
+        });
+    });
+</script>
+</body>

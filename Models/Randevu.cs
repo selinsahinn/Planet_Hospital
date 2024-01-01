@@ -10,8 +10,10 @@ namespace udemyWeb1.Models
         [Key]
         public int Id { get; set; }
 
+
         [Required]
         public string HastaId { get; set; }
+
 
         [ValidateNever]
         public int DoktorId {  get; set; }

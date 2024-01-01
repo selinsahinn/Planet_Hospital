@@ -1,3 +1,13 @@
+body {
+    background-color: #B6C4B6; /* Arka plan rengi örneði */
+}
+/* Örnek: Navbar'ý mor yapma */
+.navbar {
+    background-color: purple; /* veya istediðiniz mor rengi belirtin */
+}
+
+
+
 html {
   font-size: 14px;
 }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using udemyWeb1.Haberlesme;
+using System;
+using System.Linq.Expressions;
 using udemyWeb1.Models;
 
 namespace udemyWeb1.Controllers
@@ -55,29 +57,58 @@ namespace udemyWeb1.Controllers
         }
 
         [HttpPost]
-        public IActionResult EkleGuncelle(Randevu randevu)  //resim eklenmiş olsa burda olcaktı vs
+        public IActionResult EkleGuncelle(Randevu randevu)
         {
-            if(ModelState.IsValid) {   
-
-                if(randevu.Id == 0) 
+            if (ModelState.IsValid)
+            {
+                // Eğer yeni bir randevu ekleniyorsa, eski randevu bilgisine ihtiyaç yok
+                if (randevu.Id != 0)
                 {
+                    // Önceki randevu bilgilerini al
+                    Randevu eskiRandevu = _randevuRepository.Get(u => u.Id == randevu.Id);
+
+                    // Eğer tarih veya saat değiştiyse kontrol yap
+                    if (eskiRandevu.RandevuTarihi != randevu.RandevuTarihi || eskiRandevu.RandevuSaati != randevu.RandevuSaati)
+                    {
+                        // Aynı tarih ve saatte başka bir randevu var mı kontrol et
+                        bool ayniTarihVeSaatteRandevuVar = _randevuRepository.Any(u =>
+                            u.DoktorId == randevu.DoktorId &&
+                            u.RandevuTarihi == randevu.RandevuTarihi &&
+                            u.RandevuSaati == randevu.RandevuSaati &&
+                            u.Id != randevu.Id); // Güncellenen randevuyu hariç tut
+
+                        if (ayniTarihVeSaatteRandevuVar)
+                        {
+                            ModelState.AddModelError("RandevuTarihi", "Seçilen tarih ve saatte başka bir randevu bulunmaktadır.");
+                            return View();
+                        }
+                    }
+                }
+
+                // Diğer kodlar...
+
+                if (randevu.Id == 0)
+                {
+                    // Yeni randevu ekleme işlemi devam eder
                     _randevuRepository.Ekle(randevu);
                     TempData["basarili"] = "Yeni Randevu kaydı başarıyla oluşturuldu";
                 }
                 else
                 {
+                    // Güncelleme işlemi devam eder
                     _randevuRepository.Guncelle(randevu);
                     TempData["basarili"] = "Randevu kayıt güncelleme başarılı ";
                 }
 
-
                 _randevuRepository.Kaydet();
-                
-                return RedirectToAction("Index","Randevu");
+
+                return RedirectToAction("Index", "Randevu");
             }
+
             return View();
         }
-       
+
+
         //GET ACTION
         public IActionResult Sil(int? id)
         {
