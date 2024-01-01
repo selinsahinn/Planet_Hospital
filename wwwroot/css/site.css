@@ -776,7 +776,7 @@ a:focus {
     }
 
         .info_section .social-box .box {
-            background-color: #ffffff;
+            background-color: #FFE17B;
             padding: 5px 15px;
         }
 
@@ -820,7 +820,7 @@ a:focus {
         background-position: center;
         text-align: center;
         line-height: 80px;
-        background-color: #0355cc;
+        background-color: #7A316F;
         color: #ffffff;
     }
 
@@ -865,7 +865,7 @@ a:focus {
         padding: 25px 0;
         color: #ffffff;
         text-align: center;
-        border-top: 0.8px solid #ffffff;
+        border-top: 0.8px solid #FFF78A;
     }
 
     .footer_section a {
