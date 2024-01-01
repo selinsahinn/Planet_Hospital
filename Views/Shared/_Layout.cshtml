@@ -17,7 +17,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-custom-color border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="color: white;">Planet Hospital</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="color: white;"> Planet Hospital </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -26,22 +26,22 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-house"></i> Anasayfa</a>
+                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-house"></i> Anasayfa </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="PoliklinikTuru" asp-action="Index"><i class="fa-solid fa-hospital"></i> Poliklinikler</a>
+                            <a class="nav-link " asp-area="" asp-controller="PoliklinikTuru" asp-action="Index"><i class="fa-solid fa-hospital"></i> Poliklinikler </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Doktor" asp-action="Index"><i class="fa-solid fa-user-doctor"></i> Doktorlarımız</a>
+                            <a class="nav-link " asp-area="" asp-controller="Doktor" asp-action="Index"><i class="fa-solid fa-user-doctor"></i> Doktorlarımız </a>
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link " asp-area="" asp-controller="Randevu" asp-action="Index"><i class="fa-solid fa-receipt"></i> Randevu İşlemleri</a>
+                                <a class="nav-link " asp-area="" asp-controller="Randevu" asp-action="Index"><i class="fa-solid fa-receipt"></i> Randevu İşlemleri </a>
                             </li>
                         }
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Privacy"><i class="fa-solid fa-tty"></i> İletişim</a>
+                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Privacy"><i class="fa-solid fa-tty"></i> İletişim </a>
                         </li>
                     </ul>
 
